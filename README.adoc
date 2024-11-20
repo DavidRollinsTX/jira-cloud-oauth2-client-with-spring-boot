@@ -24,11 +24,11 @@ https://bitbucket.org/atlassian/atlassian-connect-spring-boot/src/master/[Atlass
 ****
 As the final result we will be calling our application's endpoint to call Jira Cloud REST API via Spring Security OAuth2 Client integration.
 
-image::images/homePage.png[]
+image::docs/images/homePage.png[]
 
-image::images/oauthAuthorizationPrompt.png[]
+image::docs/images/oauthAuthorizationPrompt.png[]
 
-image::images/resultJson.png[]
+image::docs/images/resultJson.png[]
 ****
 
 == Getting started
@@ -54,7 +54,7 @@ TIP: At the time of this writing, Atlassian is accepting _guerrillamail_ address
 We will be working with the _https_ version of the URL.
 
 .ngrok output should be very similar to this one.
-image::images/ngrokOutput.png[]
+image::docs/images/ngrokOutput.png[]
 
 WARNING: Don't close or restart it during your work. ngrok domain is changed in every restart.
 
@@ -64,11 +64,11 @@ TIP: Don't try to CTRL+C the URL in the console output as it will kill the proce
 
 Go to https://developer.atlassian.com/apps/ and create a new app.
 
-image::images/createYourFirstAppAtlassian.png[]
+image::docs/images/createYourFirstAppAtlassian.png[]
 
-image::images/createApp.png[]
+image::docs/images/createApp.png[]
 
-image::images/appDetails.png[]
+image::docs/images/appDetails.png[]
 
 Ensure you have `OAuth 2.0 (3LO)` (highlighted in above image).
 
@@ -80,7 +80,7 @@ If you don't see `OAuth 2.0 (3LO)` then enable it with https://developer.atlassi
 * It should be HTTPS
 * You don't have to use `/callback`. You can change it if you want.
 
-image::images/addCallbackToWhitelist.png[]
+image::docs/images/addCallbackToWhitelist.png[]
 
 ==== Add Jira API
 
@@ -89,9 +89,9 @@ image::images/addCallbackToWhitelist.png[]
 . Click `configure` on _Jira platform REST API_.
 . Ensure `read:jira-user` scope is added.
 
-image::images/addJiraApi.png[]
+image::docs/images/addJiraApi.png[]
 
-image::images/ensureScopes.png[]
+image::docs/images/ensureScopes.png[]
 
 .Talk is cheap show me the code
 ****
@@ -116,18 +116,18 @@ https://auth.atlassian.com/authorize?audience=api.atlassian.com&client_id=YOUR_C
 
 *2)* It should ask you for authorization as follows:
 
-image::images/oauthAuthorizationPrompt.png[]
+image::docs/images/oauthAuthorizationPrompt.png[]
 
 .Troubleshooting
 ****
 If you see below error then (as the error message says) you need to create a Jira Cloud account. See <<_create_a_jira_cloud_account, Create a Jira Cloud account>>
 
-image::images/dontHaveJiraSiteError.png[]
+image::docs/images/dontHaveJiraSiteError.png[]
 ****
 
 *3)* Accept it and you should see an ngrok error page like below:
 
-image::images/failedTunnelError.png[]
+image::docs/images/failedTunnelError.png[]
 
 Your browser's address bar should be something like:
 
@@ -276,7 +276,7 @@ CAUTION: You should define those values as environment variables or pass them as
 . Go to https://admin.atlassian.com
 . Click on your site
 
-image::images/atlassianAdmin.png[]
+image::docs/images/atlassianAdmin.png[]
 
 Look at the address bar: `https://admin.atlassian.com/s/1324a887-45db-1bf4-1e99-ef0ff456d421/users`.
 
@@ -284,7 +284,7 @@ Look at the address bar: `https://admin.atlassian.com/s/1324a887-45db-1bf4-1e99-
 ****
 
 .You can define environment variables in your IDE. This is an example screenshot for IntelliJ IDEA.
-image::images/ideaEnvVars.png[]
+image::docs/images/ideaEnvVars.png[]
 
 In configuration we define our beans:
 
@@ -457,13 +457,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ** You will be redirected to your callback, hence your application
 * Your application makes a request to Jira API behind the scenes and returns you the JSON response.
 
-image::images/resultJson.png[]
+image::docs/images/resultJson.png[]
 
 == Troubleshooting
 
 === Callback URL is not whitelisted
 
-image::images/callbackNotRegisteredError.png[]
+image::docs/images/callbackNotRegisteredError.png[]
 
 ```
 Something went wrong while executing your request.
@@ -478,7 +478,7 @@ Reset your callback URL from `App Details` page on `https://developer.atlassian.
 
 === Failed to complete tunnel connection
 
-image::images/failedTunnelError.png[]
+image::docs/images/failedTunnelError.png[]
 
 .Possible cause:
 Your application isn't running or crashed.
